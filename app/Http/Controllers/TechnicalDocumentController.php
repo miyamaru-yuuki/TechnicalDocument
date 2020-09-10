@@ -10,16 +10,17 @@ class TechnicalDocumentController extends Controller
 {
     public function index(Request $request)
     {
-        $mode = $request->input('mode');
-        if($mode && $mode == "add"){
-            $title = $request->input('title');
-            $body = $request->input('body');
-            $cid = $request->input('cid');
-            $registdate = date("Y/m/d");
+        $title = $request->input('title');
+        $body = $request->input('body');
+        $cid = $request->input('cid');
 
+        if($title && $body && $cid){
+            $registdate = date("Y/m/d");
             $document = new Document();
             $document->create(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
+            return redirect('/');
         }
+
         $document = new Document();
         $documentList = $document
             ->join('category', 'document.cid', '=', 'category.cid')
