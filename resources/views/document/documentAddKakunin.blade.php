@@ -15,6 +15,7 @@
     <input type="hidden" name="title" value="{{$title}}">
     <input type="hidden" name="body" value="{{$body}}">
     <input type="hidden" name="cid" value="{{$cid}}">
+    <input type="hidden" name="mode" value="add">
     <input type="submit" value="OK">
 </form>
 
