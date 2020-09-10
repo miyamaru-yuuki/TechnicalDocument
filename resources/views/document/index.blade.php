@@ -1,8 +1,16 @@
 <html>
 <head>
-    {{--<link rel="stylesheet" type="text/css" href="/css/styles.css">--}}
-    <title>技術文書管理3</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>技術文書管理</title>
 </head>
 <body>
+<h1>技術文書管理</h1>
+<div>検索ワード：<input type="text" name="searchWord"><input type="submit" value="検索する"></div>
+<div><a href="{{url('documentAdd')}}">文書追加</a></div>
+<table>
+    @foreach ($documentList as $data)
+        <tr><td>{{$data->registdate}}</td><td><a href="{{url('list/' .$data->cid)}}">{{$data->cname}}</a></td><td><a href="{{url('list/' .$data->title)}}">{{$data->title}}</a></td></tr>
+    @endforeach
+</table>
 </body>
 </html>
