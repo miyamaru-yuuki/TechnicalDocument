@@ -9,4 +9,4 @@ Route::get('update/{did}', 'TechnicalDocumentController@update');
 
 Route::post('documentAddExe', 'TechnicalDocumentController@documentAddExe');
 Route::post('documentAddKakunin/', 'TechnicalDocumentController@documentAddKakunin');
-Route::post('{did}/documentUpdExe', 'TechnicalDocumentController@documentUpdExe');
+Route::post('documentUpdExe', 'TechnicalDocumentController@documentUpdExe');

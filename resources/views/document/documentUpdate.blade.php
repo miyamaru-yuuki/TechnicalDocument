@@ -6,7 +6,7 @@
 <body>
 <h1>技術文書管理</h1>
 
-<form action="documentUpdExe" method="post">
+<form action="/documentUpdExe" method="post">
     {{ csrf_field() }}
     <div>タイトル：<input type="text" name="title" value="{{$document->title}}"></div>
     <div>本文：<textarea name="body">{{$document->body}}</textarea></div>
