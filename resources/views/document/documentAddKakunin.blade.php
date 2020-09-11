@@ -10,7 +10,7 @@
 <p>カテゴリ：{{$category['cname']}}</p>
 <p>この内容で登録しますか？？</p>
 
-<form action="/" method="post">
+<form action="documentAddExe" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="title" value="{{$title}}">
     <input type="hidden" name="body" value="{{$body}}">

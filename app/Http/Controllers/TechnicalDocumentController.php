@@ -8,25 +8,25 @@ use App\Models\Category;
 
 class TechnicalDocumentController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $title = $request->input('title');
-        $body = $request->input('body');
-        $cid = $request->input('cid');
-
-        if($title && $body && $cid){
-            $registdate = date("Y/m/d");
-            $document = new Document();
-            $document->create(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
-            return redirect('/');
-        }
-
         $document = new Document();
         $documentList = $document
             ->join('category', 'document.cid', '=', 'category.cid')
             ->get();
 
         return view('document.index',['documentList' => $documentList]);
+    }
+
+    public function documentAddExe(Request $request)
+    {
+        $title = $request->input('title');
+        $body = $request->input('body');
+        $cid = $request->input('cid');
+        $registdate = date("Y/m/d");
+        $document = new Document();
+        $document->create(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
+        return redirect('/');
     }
 
     public function list($cid)
