@@ -34,6 +34,10 @@ td{
 
 }
 
+p {
+    white-space: pre-wrap;
+}
+
 .title {
 
     text-decoration: none;
