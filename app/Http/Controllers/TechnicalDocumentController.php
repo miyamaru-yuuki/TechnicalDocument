@@ -61,4 +61,32 @@ class TechnicalDocumentController extends Controller
 
         return view('document.documentAddKakunin', ['title' => $title, 'body' => $body, 'cid' => $cid,'category' => $category]);
     }
+
+    public function update($did)
+    {
+        $document = new Document();
+        $document = $document
+            ->join('category', 'document.cid', '=', 'category.cid')
+            ->where('document.did',$did)
+            ->first();
+
+        $category = new Category();
+        $categoryData = $category
+            ->get();
+
+        return view('document.documentUpdate',['document' => $document,'categoryData' => $categoryData]);
+    }
+
+    public function documentUpdExe(Request $request)
+    {
+        dd($request);
+        $title = $request->input('title');
+        $body = $request->input('body');
+        $cid = $request->input('cid');
+        $registdate = date("Y/m/d");
+
+        $document = new Document();
+        $document->update(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
+        return redirect('/');
+    }
 }
