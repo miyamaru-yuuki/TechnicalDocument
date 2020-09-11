@@ -6,7 +6,7 @@
 <body>
 <h1>技術文書管理</h1>
 <p>タイトル:{{$title}}</p>
-<p>本文：{{$body}}</p>
+<p id="body">本文：{{$body}}</p>
 <p>カテゴリ：{{$category['cname']}}</p>
 <p>この内容で登録しますか？？</p>
 
