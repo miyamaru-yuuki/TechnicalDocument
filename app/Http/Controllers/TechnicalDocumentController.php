@@ -79,14 +79,15 @@ class TechnicalDocumentController extends Controller
 
     public function documentUpdExe(Request $request)
     {
-        dd($request);
+        $did = $request->input('did');
         $title = $request->input('title');
         $body = $request->input('body');
         $cid = $request->input('cid');
         $registdate = date("Y/m/d");
 
         $document = new Document();
-        $document->update(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
+        $document->where('did',$did)
+            ->update(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
         return redirect('/');
     }
 }

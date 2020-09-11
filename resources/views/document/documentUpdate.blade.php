@@ -22,6 +22,7 @@
         </select>
         <input type="submit" value="更新">
     </div>
+    <input type="hidden" name="did" value="{{$document->did}}">
 </form>
 
 </body>
