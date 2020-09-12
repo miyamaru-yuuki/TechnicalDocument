@@ -113,12 +113,58 @@ class TechnicalDocumentController extends Controller
         return redirect('/');
     }
 
-    public function categorySet()
+    public function categorySet($mode)
     {
         $category = new Category();
         $categoryData = $category
             ->get();
 
-        return view('category.categorySet',['categoryData' => $categoryData]);
+        return view('category.categorySet',['categoryData' => $categoryData,'mode' => $mode]);
     }
+
+    public function categoryAddExe(Request $request)
+    {
+        $cname = $request->input('cname');
+        $explanation = $request->input('explanation');
+
+        $category = new Category();
+        $category->create(['cname' => $cname, 'explanation' => $explanation]);
+        return redirect('categorySet/init');
+    }
+
+    public function categoryUpdate($cid)
+    {
+        $mode = "edit";
+
+        $category = new Category();
+        $categoryData = $category
+            ->get();
+        $categoryDtum = $category
+            ->find($cid);
+
+        return view('category.categorySet',['categoryData' => $categoryData,'categoryDtum' => $categoryDtum,'mode' => $mode]);
+    }
+
+    public function categoryUpdExe(Request $request)
+    {
+        $cid = $request->input('cid');
+        $cname = $request->input('cname');
+        $explanation = $request->input('explanation');
+
+        $category = new Category();
+        $category->where('cid',$cid)
+            ->update(['cname' => $cname, 'explanation' => $explanation]);
+
+        return redirect('categorySet/init');
+    }
+
+    public function categoryDelExe($cid)
+    {
+        $category = new Category();
+        $category->where('cid',$cid)
+            ->delete();
+
+        return redirect('categorySet/init');
+    }
+
 }
