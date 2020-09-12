@@ -8,12 +8,24 @@ use App\Models\Category;
 
 class TechnicalDocumentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $document = new Document();
-        $documentList = $document
-            ->join('category', 'document.cid', '=', 'category.cid')
-            ->get();
+        $mode = $request->query('mode');
+        if($mode && $mode == "search"){
+            $searchWord = $request->query('searchWord',"");
+
+            $document = new Document();
+            $documentList = $document
+                ->join('category', 'document.cid', '=', 'category.cid')
+                ->where('title','like','%' .$searchWord. '%')
+                ->get();
+
+        }else{
+            $document = new Document();
+            $documentList = $document
+                ->join('category', 'document.cid', '=', 'category.cid')
+                ->get();
+        }
 
         return view('document.index',['documentList' => $documentList]);
     }
@@ -49,7 +61,7 @@ class TechnicalDocumentController extends Controller
         return view('document.documentAdd',['categoryData' => $categoryData]);
     }
 
-    public function documentAddKakunin(Request $request)
+    public function documentAddKakunin(\App\Http\Requests\documentRequest $request)
     {
         $title = $request->input('title');
         $body = $request->input('body');
@@ -77,7 +89,7 @@ class TechnicalDocumentController extends Controller
         return view('document.documentUpdate',['document' => $document,'categoryData' => $categoryData]);
     }
 
-    public function documentUpdExe(Request $request)
+    public function documentUpdExe(\App\Http\Requests\documentRequest $request)
     {
         $did = $request->input('did');
         $title = $request->input('title');
@@ -122,7 +134,7 @@ class TechnicalDocumentController extends Controller
         return view('category.categorySet',['categoryData' => $categoryData,'mode' => $mode]);
     }
 
-    public function categoryAddExe(Request $request)
+    public function categoryAddExe(\App\Http\Requests\categoryRequest $request)
     {
         $cname = $request->input('cname');
         $explanation = $request->input('explanation');
@@ -145,7 +157,7 @@ class TechnicalDocumentController extends Controller
         return view('category.categorySet',['categoryData' => $categoryData,'categoryDtum' => $categoryDtum,'mode' => $mode]);
     }
 
-    public function categoryUpdExe(Request $request)
+    public function categoryUpdExe(\App\Http\Requests\categoryRequest $request)
     {
         $cid = $request->input('cid');
         $cname = $request->input('cname');
