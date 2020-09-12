@@ -88,6 +88,37 @@ class TechnicalDocumentController extends Controller
         $document = new Document();
         $document->where('did',$did)
             ->update(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
+
         return redirect('/');
+    }
+
+    public function documentDelKakunin($did)
+    {
+        $document = new Document();
+        $document = $document
+            ->join('category', 'document.cid', '=', 'category.cid')
+            ->find($did);
+
+        return view('document.documentDelKakunin',['document' => $document]);
+    }
+
+    public function documentDelExe(Request $request)
+    {
+        $did = $request->input('did');
+
+        $document = new Document();
+        $document->where('did',$did)
+            ->delete();
+
+        return redirect('/');
+    }
+
+    public function categorySet()
+    {
+        $category = new Category();
+        $categoryData = $category
+            ->get();
+
+        return view('category.categorySet',['categoryData' => $categoryData]);
     }
 }
