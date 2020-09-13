@@ -10,8 +10,40 @@ class TechnicalDocumentController extends Controller
 {
     public function index(Request $request)
     {
-        $mode = $request->query('mode');
-        if($mode && $mode == "search"){
+        $searchmode = $request->query('searchmode');
+        $mode = $request->input('mode');
+
+        if($mode && $mode == "add"){
+            $title = $request->input('title');
+            $body = $request->input('body');
+            $cid = $request->input('cid');
+            $registdate = date("Y/m/d");
+            $document = new Document();
+            $document->create(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
+            return redirect('/');
+        }elseif($mode && $mode == "edit"){
+            $did = $request->input('did');
+            $title = $request->input('title');
+            $body = $request->input('body');
+            $cid = $request->input('cid');
+            $registdate = date("Y/m/d");
+
+            $document = new Document();
+            $document->where('did',$did)
+                ->update(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
+
+            return redirect('/');
+        }elseif($mode && $mode == "del"){
+            $did = $request->input('did');
+
+            $document = new Document();
+            $document->where('did',$did)
+                ->delete();
+
+            return redirect('/');
+        }
+
+        if($searchmode && $searchmode == "search"){
             $searchWord = $request->query('searchWord',"");
 
             $document = new Document();

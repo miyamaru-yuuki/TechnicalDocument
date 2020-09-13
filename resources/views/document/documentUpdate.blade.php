@@ -23,6 +23,7 @@
         <input type="submit" value="更新">
     </div>
     <input type="hidden" name="did" value="{{$document->did}}">
+    <input type="hidden" name="mode" value="edit">
 </form>
 
 <div><a href="{{url('documentDelKakunin/' .$document->did)}}">削除</a></div>

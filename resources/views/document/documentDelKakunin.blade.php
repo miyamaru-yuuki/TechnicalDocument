@@ -14,6 +14,7 @@
 <form action="/documentDelExe" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="did" value="{{$document->did}}">
+    <input type="hidden" name="mode" value="del">
     <input type="submit" value="OK">
 </form>
 
