@@ -7,11 +7,11 @@
 <h1>技術文書管理</h1>
 <table>
     @foreach ($categoryData as $data)
-        <tr><td><a href="{{url('categorySet/edit/' .$data->cid)}}">{{$data->cname}}</a></td><td>{{$data->explanation}}</td></tr>
+        <tr><td><a href="{{url('categorySet?mode=edit&cid=' .$data->cid)}}">{{$data->cname}}</a></td><td>{{$data->explanation}}</td></tr>
     @endforeach
 </table>
 @if($mode == "init")
-    <div><a href="{{url('categorySet/add/null')}}">追加</a></div>
+    <div><a href="{{url('categorySet?mode=add')}}">追加</a></div>
 @elseif($mode == "add")
     <form action="/categoryAddExe" method="post">
         {{ csrf_field() }}

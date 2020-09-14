@@ -9,7 +9,7 @@ Route::get('documentAdd', 'TechnicalDocumentController@documentAdd');
 Route::get('update/{did}', 'TechnicalDocumentController@update');
 Route::get('documentDelKakunin/{did}', 'TechnicalDocumentController@documentDelKakunin');
 
-Route::get('categorySet/{mode}/{cid}', 'TechnicalDocumentController@categorySet');
+Route::get('categorySet', 'TechnicalDocumentController@categorySet');
 Route::get('categoryUpdate/{cid}', 'TechnicalDocumentController@categoryUpdate');
 Route::get('categoryDelExe/{cid}', 'TechnicalDocumentController@categoryDelExe');
 

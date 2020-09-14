@@ -174,14 +174,17 @@ class TechnicalDocumentController extends Controller
         return redirect('/');
     }
 
-    public function categorySet($mode,$cid)
+    public function categorySet(Request $request)
     {
+        $mode = $request->query('mode');
+
         $category = new Category();
         $categoryData = $category
             ->get();
 
         $categoryDtum = null;
         if($mode == 'edit'){
+            $cid = $request->query('cid');
             $categoryDtum = $category
                 ->find($cid);
         }
@@ -196,7 +199,7 @@ class TechnicalDocumentController extends Controller
 
         $category = new Category();
         $category->create(['cname' => $cname, 'explanation' => $explanation]);
-        return redirect('categorySet/init/null');
+        return redirect('categorySet?mode=init');
     }
 
     public function categoryUpdExe(\App\Http\Requests\categoryRequest $request)
@@ -209,7 +212,7 @@ class TechnicalDocumentController extends Controller
         $category->where('cid',$cid)
             ->update(['cname' => $cname, 'explanation' => $explanation]);
 
-        return redirect('categorySet/init/null');
+        return redirect('categorySet?mode=init');
     }
 
     public function categoryDelExe($cid)
@@ -218,7 +221,7 @@ class TechnicalDocumentController extends Controller
         $category->where('cid',$cid)
             ->delete();
 
-        return redirect('categorySet/init/null');
+        return redirect('categorySet?mode=init');
     }
 
 }
