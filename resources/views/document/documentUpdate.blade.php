@@ -27,7 +27,7 @@
 </form>
 
 <div><a href="{{url('documentDelKakunin/' .$document->did)}}">削除</a></div>
-<div><a href="{{url('categorySet/init')}}">カテゴリ設定</a></div>
+<div><a href="{{url('categorySet/init/null')}}">カテゴリ設定</a></div>
 
 </body>
 </html>

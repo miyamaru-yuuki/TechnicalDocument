@@ -174,13 +174,19 @@ class TechnicalDocumentController extends Controller
         return redirect('/');
     }
 
-    public function categorySet($mode)
+    public function categorySet($mode,$cid)
     {
         $category = new Category();
         $categoryData = $category
             ->get();
 
-        return view('category.categorySet',['categoryData' => $categoryData,'mode' => $mode]);
+        $categoryDtum = null;
+        if($mode == 'edit'){
+            $categoryDtum = $category
+                ->find($cid);
+        }
+
+        return view('category.categorySet',['categoryData' => $categoryData,'categoryDtum' => $categoryDtum,'mode' => $mode]);
     }
 
     public function categoryAddExe(\App\Http\Requests\categoryRequest $request)
@@ -190,20 +196,7 @@ class TechnicalDocumentController extends Controller
 
         $category = new Category();
         $category->create(['cname' => $cname, 'explanation' => $explanation]);
-        return redirect('categorySet/init');
-    }
-
-    public function categoryUpdate($cid)
-    {
-        $mode = "edit";
-
-        $category = new Category();
-        $categoryData = $category
-            ->get();
-        $categoryDtum = $category
-            ->find($cid);
-
-        return view('category.categorySet',['categoryData' => $categoryData,'categoryDtum' => $categoryDtum,'mode' => $mode]);
+        return redirect('categorySet/init/null');
     }
 
     public function categoryUpdExe(\App\Http\Requests\categoryRequest $request)
@@ -216,7 +209,7 @@ class TechnicalDocumentController extends Controller
         $category->where('cid',$cid)
             ->update(['cname' => $cname, 'explanation' => $explanation]);
 
-        return redirect('categorySet/init');
+        return redirect('categorySet/init/null');
     }
 
     public function categoryDelExe($cid)
@@ -225,7 +218,7 @@ class TechnicalDocumentController extends Controller
         $category->where('cid',$cid)
             ->delete();
 
-        return redirect('categorySet/init');
+        return redirect('categorySet/init/null');
     }
 
 }
