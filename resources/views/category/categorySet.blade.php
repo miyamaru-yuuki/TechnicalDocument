@@ -11,11 +11,7 @@
     @endforeach
 </table>
 @if($mode == "init")
-    <form action="/categorySet" method="post">
-        {{ csrf_field() }}
-        <input type="hidden" name="mode" value="add">
-        <div><input type="submit" value="追加"></div>
-    </form>
+    <div><a href="{{url('categorySet?mode=add')}}">追加</a></div>
 @elseif($mode == "add")
     <form action="/categoryAddExe" method="post">
         {{ csrf_field() }}
@@ -31,7 +27,11 @@
         <div><input type="hidden" name="cid" value="{{$categoryDtum->cid}}"></div>
         <div><input type="submit" value="更新"></div>
     </form>
-    <div><a href="{{url('categoryDelExe/' .$categoryDtum->cid)}}">削除</a></div>
+    <form action="/categoryDelExe" method="post">
+        {{ csrf_field() }}
+        <input type="hidden" name="cid" value="{{$categoryDtum->cid}}">
+        <div><input type="submit" value="削除"></div>
+    </form>
 @endif
 </body>
 </html>

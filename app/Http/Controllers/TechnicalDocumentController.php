@@ -218,8 +218,10 @@ class TechnicalDocumentController extends Controller
         return redirect('categorySet?mode=init');
     }
 
-    public function categoryDelExe($cid)
+    public function categoryDelExe(Request $request)
     {
+        $cid = $request->input('cid');
+
         $category = new Category();
         $category->where('cid',$cid)
             ->delete();
