@@ -18,5 +18,6 @@ Route::post('documentAddKakunin', 'TechnicalDocumentController@documentAddKakuni
 Route::post('documentUpdExe', 'TechnicalDocumentController@documentUpdExe');
 Route::post('documentDelExe', 'TechnicalDocumentController@documentDelExe');
 
+Route::post('categorySet', 'TechnicalDocumentController@categorySet');
 Route::post('categoryAddExe', 'TechnicalDocumentController@categoryAddExe');
 Route::post('categoryUpdExe', 'TechnicalDocumentController@categoryUpdExe');

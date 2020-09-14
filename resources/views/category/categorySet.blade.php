@@ -11,7 +11,11 @@
     @endforeach
 </table>
 @if($mode == "init")
-    <div><a href="{{url('categorySet?mode=add')}}">追加</a></div>
+    <form action="/categorySet" method="post">
+        {{ csrf_field() }}
+        <input type="hidden" name="mode" value="add">
+        <div><input type="submit" value="追加"></div>
+    </form>
 @elseif($mode == "add")
     <form action="/categoryAddExe" method="post">
         {{ csrf_field() }}

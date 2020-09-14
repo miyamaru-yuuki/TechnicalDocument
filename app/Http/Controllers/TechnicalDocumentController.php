@@ -177,6 +177,9 @@ class TechnicalDocumentController extends Controller
     public function categorySet(Request $request)
     {
         $mode = $request->query('mode');
+        if($request->isMethod('POST')){
+            $mode = $request->input('mode');
+        }
 
         $category = new Category();
         $categoryData = $category
