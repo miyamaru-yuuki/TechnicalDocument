@@ -11,7 +11,7 @@
 <p>カテゴリ：{{$document->cname}}</p>
 <p>削除してよいですか？</p>
 
-<form action="/documentDelExe" method="post">
+<form action="/" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="did" value="{{$document->did}}">
     <input type="hidden" name="mode" value="del">
