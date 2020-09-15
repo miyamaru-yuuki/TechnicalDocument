@@ -17,6 +17,7 @@ class TechnicalDocumentController extends Controller
             ->join('category', 'document.cid', '=', 'category.cid')
             ->where('title','like','%' .$searchWord. '%')
             ->orwhere('cname','like','%' .$searchWord. '%')
+            ->orwhere('body','like','%' .$searchWord. '%')
             ->get();
 
         return view('document.index',['documentList' => $documentList]);
