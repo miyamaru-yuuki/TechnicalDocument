@@ -20,7 +20,7 @@ class TechnicalDocumentController extends Controller
             ->orwhere('body','like','%' .$searchWord. '%')
             ->get();
 
-        return view('document.index',['documentList' => $documentList]);
+        return view('document.index',['documentList' => $documentList,'searchWord' => $searchWord]);
     }
 
     public function documentAddExe(Request $request)
