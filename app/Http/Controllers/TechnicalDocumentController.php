@@ -10,71 +10,14 @@ class TechnicalDocumentController extends Controller
 {
     public function index(Request $request)
     {
-        $searchmode = $request->query('searchmode');
-//        $mode = $request->isMethod('POST');
-//
-//        if($mode && $mode == "add"){
-//            dd('add');
-//            $title = $request->input('title');
-//            $body = $request->input('body');
-//            $cid = $request->input('cid');
-//            $registdate = date("Y/m/d");
-//            $document = new Document();
-//            $document->create(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
-//            return redirect('/');
-//        }elseif($mode && $mode == "edit"){
-//            dd('edit');
-//            $did = $request->input('did');
-//            $title = $request->input('title');
-//            $body = $request->input('body');
-//            $cid = $request->input('cid');
-//            $registdate = date("Y/m/d");
-//
-//            $document = new Document();
-//            $document->where('did',$did)
-//                ->update(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
-//
-//            return redirect('/');
-//        }elseif($mode && $mode == "del"){
-//            $did = $request->input('did');
-//
-//            $document = new Document();
-//            $document->where('did',$did)
-//                ->delete();
-//
-//            return redirect('/');
-//        }
+        $searchWord = $request->query('searchWord',"");
 
-        $mode = $request->isMethod('POST');
-        if($mode && $mode == "add"){
-            $title = $request->input('title');
-            $body = $request->input('body');
-            $cid = $request->input('cid');
-            $registdate = date("Y/m/d");
-
-            $document = new Document();
-            $document->create(['title' => $title, 'body' => $body, 'cid' => $cid,'registdate' => $registdate]);
-        }
         $document = new Document();
         $documentList = $document
             ->join('category', 'document.cid', '=', 'category.cid')
+            ->where('title','like','%' .$searchWord. '%')
+            ->orwhere('cname','like','%' .$searchWord. '%')
             ->get();
-
-//        if($searchmode && $searchmode == "search"){
-//            $searchWord = $request->query('searchWord',"");
-//
-//            $document = new Document();
-//            $documentList = $document
-//                ->join('category', 'document.cid', '=', 'category.cid')
-//                ->where('title','like','%' .$searchWord. '%')
-//                ->get();
-//
-//        }else{
-//            $document = new Document();
-//            $documentList = $document
-//                ->join('category', 'document.cid', '=', 'category.cid')
-//                ->get();
-//        }
 
         return view('document.index',['documentList' => $documentList]);
     }

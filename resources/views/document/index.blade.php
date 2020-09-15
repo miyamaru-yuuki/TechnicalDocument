@@ -7,7 +7,6 @@
 <h1>技術文書管理</h1>
 <form action="/" method="get">
 <div>検索ワード：<input type="text" name="searchWord"><input type="submit" value="検索する"></div>
-    <input type="hidden" name="searchmode" value="search">
 </form>
 <div><a href="{{url('documentAdd')}}">文書追加</a></div>
 <table>

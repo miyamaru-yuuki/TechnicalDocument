@@ -6,7 +6,7 @@
 <body>
 <h1>技術文書管理</h1>
 
-<form action="/" method="post">
+<form action="/documentUpdExe" method="post">
     {{ csrf_field() }}
     <div>タイトル：<input type="text" name="title" value="{{$document->title}}"></div>
     <div>本文：<textarea name="body">{{$document->body}}</textarea></div>
@@ -14,16 +14,16 @@
         <select name="cid">
             @foreach($categoryData as $data)
                 @if($data->cid == $document->cid)
-                    <option value="{{$data['cid']}}" selected>{{$data['cname']}}</option>
+                    {{$selected = ' selected'}}
                 @else
-                    <option value="{{$data['cid']}}">{{$data['cname']}}</option>
+                    {{$selected = ''}}
                 @endif
+                    <option value="{{$data['cid']}}"{{$selected}}>{{$data['cname']}}</option>
             @endforeach
         </select>
         <input type="submit" value="更新">
     </div>
     <input type="hidden" name="did" value="{{$document->did}}">
-    <input type="hidden" name="mode" value="edit">
 </form>
 
 <div><a href="{{url('documentDelKakunin/' .$document->did)}}">削除</a></div>
