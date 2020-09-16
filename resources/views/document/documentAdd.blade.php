@@ -18,5 +18,6 @@
     <input type="submit" value="登録">
 </div>
 </form>
+<a href="{{ url('/') }}">TOP</a>
 </body>
 </html>

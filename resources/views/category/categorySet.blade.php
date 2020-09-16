@@ -33,5 +33,6 @@
         <div><input type="submit" value="削除"></div>
     </form>
 @endif
+<a href="{{ url('/') }}">TOP</a>
 </body>
 </html>

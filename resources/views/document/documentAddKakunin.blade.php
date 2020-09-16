@@ -17,6 +17,6 @@
     <input type="hidden" name="cid" value="{{$cid}}">
     <input type="submit" value="OK">
 </form>
-
+<a href="{{ url('/') }}">TOP</a>
 </body>
 </html>

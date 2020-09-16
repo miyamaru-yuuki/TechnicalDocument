@@ -28,6 +28,6 @@
 
 <div><a href="{{url('documentDelKakunin/' .$document->did)}}">削除</a></div>
 <div><a href="{{url('categorySet?mode=init')}}">カテゴリ設定</a></div>
-
+<a href="{{ url('/') }}">TOP</a>
 </body>
 </html>
