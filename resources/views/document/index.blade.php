@@ -14,5 +14,8 @@
         <tr><td>{{$data->registdate}}</td><td><a href="{{url('list/' .$data->cid)}}">{{$data->cname}}</a></td><td><a href="{{url('update/' .$data->did)}}">{{$data->title}}</a></td></tr>
     @endforeach
 </table>
+@if($documentList == [])
+    <p>見つかりません</p>
+@endif
 </body>
 </html>
