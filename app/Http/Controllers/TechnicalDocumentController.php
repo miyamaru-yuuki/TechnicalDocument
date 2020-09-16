@@ -42,7 +42,7 @@ class TechnicalDocumentController extends Controller
             ->where('document.cid',$cid)
             ->get();
 
-        return view('document.index',['documentList' => $documentList]);
+        return view('document.index',['documentList' => $documentList,'cid' => $cid]);
     }
 
     public function documentAdd()
