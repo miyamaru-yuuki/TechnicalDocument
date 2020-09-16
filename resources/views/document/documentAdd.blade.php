@@ -5,6 +5,8 @@
 </head>
 <body>
 <h1>技術文書管理</h1>
+<p>{{$errors->first('title')}}</p>
+<p>{{$errors->first('body')}}</p>
 <form action="/documentAddKakunin" method="post">
     {{ csrf_field() }}
 <div>タイトル：<input type="text" name="title"></div>

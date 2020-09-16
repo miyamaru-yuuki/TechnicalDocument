@@ -10,6 +10,7 @@
         <tr><td><a href="{{url('categorySet?mode=edit&cid=' .$data->cid)}}">{{$data->cname}}</a></td><td>{{$data->explanation}}</td></tr>
     @endforeach
 </table>
+<p>{{$errors->first('cname')}}</p>
 @if($mode == "init")
     <div><a href="{{url('categorySet?mode=add')}}">追加</a></div>
 @elseif($mode == "add")

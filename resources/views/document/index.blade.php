@@ -8,6 +8,7 @@
 <form action="/" method="get">
 <div>検索ワード：<input type="text" name="searchWord" value="@if(isset($searchWord)) {{$searchWord}} @endif"><input type="submit" value="検索する"></div>
 </form>
+<a href="{{ url('/') }}">絞り込み初期化</a>
 <div><a href="{{url('documentAdd')}}">文書追加</a></div>
 <table>
     @foreach ($documentList as $data)
