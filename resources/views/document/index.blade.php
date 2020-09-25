@@ -15,7 +15,7 @@
 <div><a href="{{url('documentAdd')}}">文書追加</a></div>
 <table>
     @foreach ($documentList as $data)
-        <tr><td>{{$data->registdate}}</td><td><a href="{{url('list/' .$data->cid)}}">{{$data->cname}}</a></td><td><a href="{{url('update/' .$data->did)}}">{{$data->title}}</a></td></tr>
+        aaaaaaaa<tr><td>{{$data->registdate}}</td><td><a href="{{url('list/' .$data->cid)}}">{{$data->cname}}</a></td><td><a href="{{url('update/' .$data->did)}}">{{$data->title}}</a></td></tr>
     @endforeach
 </table>
 @if($documentList->isEmpty())
