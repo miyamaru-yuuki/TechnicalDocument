@@ -1,7 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <title>技術文書管理1</title>
+    <title>技術文書管理100</title>
 </head>
 <body>
 <h1>技術文書管理</h1>
