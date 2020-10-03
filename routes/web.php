@@ -20,3 +20,5 @@ Route::post('documentDelExe', 'TechnicalDocumentController@documentDelExe');
 Route::post('categoryAddExe', 'TechnicalDocumentController@categoryAddExe');
 Route::post('categoryUpdExe', 'TechnicalDocumentController@categoryUpdExe');
 Route::post('categoryDelExe', 'TechnicalDocumentController@categoryDelExe');
+
+Route::post('categoryDelExe', 'TechnicalDocumentController@categoryDelExe');
