@@ -9,11 +9,17 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "barryvdh/laravel-snappy": "^0.4.8",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "laravel/framework": "^7.24",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "setasign/fpdf": "1.8.1",
+        "setasign/fpdi": "^2.3",
+        "tecnickcom/tcpdf": "^6.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

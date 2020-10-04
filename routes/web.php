@@ -22,3 +22,10 @@ Route::post('categoryUpdExe', 'TechnicalDocumentController@categoryUpdExe');
 Route::post('categoryDelExe', 'TechnicalDocumentController@categoryDelExe');
 
 Route::post('categoryDelExe', 'TechnicalDocumentController@categoryDelExe');
+
+//PDF出力
+Route::get('pdf','PDFController@index');
+//Route::get('pdf', function () {
+//    $pdf = Faker\Factory::create('ja_JP');
+//    return PDF::loadView('pdf', compact('pdf'))->inline();
+//});
