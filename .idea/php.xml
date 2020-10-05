@@ -110,6 +110,23 @@
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
       <path value="$PROJECT_DIR$/vendor/tecnickcom/tcpdf" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdf" />
+      <path value="$PROJECT_DIR$/vendor/voku/html-min" />
+      <path value="$PROJECT_DIR$/vendor/voku/simple_html_dom" />
+      <path value="$PROJECT_DIR$/vendor/tedivm/jshrink" />
+      <path value="$PROJECT_DIR$/vendor/jalle19/php-yui-compressor" />
+      <path value="$PROJECT_DIR$/vendor/nervo/yuicompressor" />
+      <path value="$PROJECT_DIR$/vendor/meenie/javascript-packer" />
+      <path value="$PROJECT_DIR$/vendor/websharks/css-minifier" />
+      <path value="$PROJECT_DIR$/vendor/tubalmartin/cssmin" />
+      <path value="$PROJECT_DIR$/vendor/linkorb/jsmin-php" />
+      <path value="$PROJECT_DIR$/vendor/patchwork/jsqueeze" />
+      <path value="$PROJECT_DIR$/vendor/wyrihaximus/compress" />
+      <path value="$PROJECT_DIR$/vendor/wyrihaximus/js-compress" />
+      <path value="$PROJECT_DIR$/vendor/wyrihaximus/html-compress" />
+      <path value="$PROJECT_DIR$/vendor/wyrihaximus/css-compress" />
+      <path value="$PROJECT_DIR$/vendor/thecodingmachine/safe" />
+      <path value="$PROJECT_DIR$/vendor/matthiasmullie/minify" />
+      <path value="$PROJECT_DIR$/vendor/matthiasmullie/path-converter" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

@@ -1,64 +1,49 @@
 <?php
 namespace App\Http\Controllers;
 
-require_once('/Users/miyamaruyuuki/TechnicalDocument/vendor/setasign/fpdi/src/Fpdi.php');
-//require_once('FPDI/src/autoload.php');
-
 use Illuminate\Http\Request;
-//use PDF;
+use setasign\Fpdi;
+use TCPDF_FONTS;
 
 class PDFController extends Controller
 {
-//    public function index(){
-//
-//        $pdf = PDF::loadHTML('<h1>こんにちは</h1>');
-//        $pdf = PDF::loadHTML('<h1>こんにちは</h1>');
-//
-//        return $pdf->setOption('encoding', 'utf-8')->inline();
-//
-//    }
-
-    public function index()
+    public function tcpdf()
     {
-        /*
-         * PDFの初期設定
-         */
-        $pdf = new Fpdi('L', 'mm', 'A4');
-
-        // テンプレートPDFの設定
-        $template_path = public_path('/Users/miyamaruyuuki/Desktop/納品書.pdf');
-        $pdf->setSourceFile($template_path);
+        $pdf = new Fpdi\TcpdfFpdi();
 
         $pdf->setPrintHeader(false);
         $pdf->setPrintFooter(false);
-        $pdf->SetAutoPageBreak(false);
-        $pdf->SetAutoPageBreak(false);
-        $pdf->SetMargins(0, 0, 0);
-        $pdf->addPage();
+        $pdf->AddPage();
 
-//        $font = new TCPDF_FONTS();
+        // テンプレートPDFファイル読み込み
+        $pdf->setSourceFile(resource_path('pdf/template_01.pdf'));
+        $page = $pdf->importPage(1);
+        $pdf->useTemplate($page);
 
-        //フォントの設定
-//        $font_bold = $font->addTTFfont(storage_path('fonts/ipag.ufm'));
-//        $pdf->setFont($font_bold, '', 30);
-//
-//        $page = $pdf->importPage(1);
-//        $pdf->useTemplate($page);
+        // フォント
+        $font = new TCPDF_FONTS();
 
-        /*
-         * PDFに表示するデータ
-         */
-        //ID
-        $pdf->SetXY(100, 49);
-        $pdf->Write(0, '1');
+        // フォント：源真ゴシック
+        $font_1 = $font->addTTFfont( resource_path('fonts/GenShinGothic-Medium.ttf') );
+        $pdf->SetFont($font_1 , '', 10,'',true);
+
+        $name = '山田太郎';
+        $name2 = '前田正太';
 
         //名前
-        $pdf->SetXY(100, 61);
-        $pdf->Write(1, 'やまだたろう');
+        $pdf->SetXY(63, 17);
+        $pdf->Write(1, $name);
+
+        //2ページ目
+        $pdf->AddPage();
+        $page = $pdf->importPage(2);
+        $pdf->useTemplate($page);
+
+        //名前(2ページ目)
+        $pdf->SetXY(63, 17);
+        $pdf->Write(1, $name2);
 
 
-        $pdf->output();
-
-        return Redirect::back();
+        $pdf->Output("output.pdf", "I");
     }
 }

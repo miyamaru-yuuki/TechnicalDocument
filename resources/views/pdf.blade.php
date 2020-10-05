@@ -31,10 +31,10 @@
         <th>備考</th>
     @for ($no = 1; $no <= 50; $no++) <tr>
         <td>{{ $no }}</td>
-        <td style="white-space: nowrap">{{ $pdf->name }}</td>
-        <td>{{ $pdf->address }}</td>
-        <td>{{ $pdf->phoneNumber }}</td>
-        <td>{{ $pdf->realText }}</td>
+        <td style="white-space: nowrap">{{ $pdf }}</td>
+        <td>{{ $pdf }}</td>
+        <td>{{ $pdf }}</td>
+        <td>{{ $pdf }}</td>
     </tr>
     @endfor
 </table>
