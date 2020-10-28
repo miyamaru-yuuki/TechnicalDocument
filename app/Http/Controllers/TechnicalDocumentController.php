@@ -171,6 +171,7 @@ class TechnicalDocumentController extends Controller
             ->delete();
 
         return redirect('categorySet?mode=init');
+        
     }
 
 }
